@@ -1,0 +1,73 @@
+$base-win-dimension: 950px;
+
+$color-black-reg: #000;
+$color-white-reg: #FFF;
+$color-dgrey-reg: #555;
+$color-lgrey-reg: #EEE;
+$color-cyan-decor: #00ECFF;
+$color-yellow-extra: #FF5;
+$color-pink-shadow: #FF00DC;
+
+body {
+    padding: 0;
+    font-family: 'Courier New', 'Verdana', 'Segoe UI', sans-serif;
+    font-size: 14pt;
+}
+
+.widget {
+    padding: 15px 20px;
+    box-shadow: 0 0 12px $color-pink-shadow;
+    border-radius: 10px;
+    align-content: center;
+    border: 1px solid $color-dgrey-reg;
+    background: $color-white-reg;
+    color: $color-dgrey-reg;
+    font-weight: bold;
+}
+
+button {
+    background: $color-black-reg;
+    border: 2px solid $color-cyan-decor;
+    color: $color-cyan-decor;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 12pt;
+}
+
+button:hover {
+    background: $color-cyan-decor;
+    border: 2px solid $color-black-reg;
+    color: $color-black-reg;
+}
+
+button:active {
+    background: $color-yellow-extra;
+    border: 2px solid $color-black-reg;
+    color: $color-black-reg;
+}
+
+#main-game-container {
+    margin: 0 auto;
+    padding: 10px;
+    div {
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (min-width: #{$base-win-dimension + 1}) {
+    div#main-game-container {
+        display: grid;
+        grid-template-columns: 1.6fr auto 2fr;
+        grid-template-rows: 1.3fr 3fr 3fr;
+        gap: 20px;
+        max-width: $base-win-dimension;
+    }
+}
+
+@media screen and (max-width: $base-win-dimension) {
+    div#main-game-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}

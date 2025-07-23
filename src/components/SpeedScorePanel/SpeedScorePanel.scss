@@ -1,0 +1,39 @@
+@use "../../styles/global.scss" as global;
+
+div#speed-score-panel {
+    display: flex;
+    flex-direction: column;
+    p {
+        margin: 0;
+    }
+    div {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        span {
+            display: inline-block;
+            width: 20pt;
+            height: 15pt;
+            margin: 5px 10px;
+            padding: 3px 10px;
+            border: 1px solid global.$color-black-reg;
+            background: global.$color-black-reg;
+        }
+        span#speed-label {
+            color: global.$color-cyan-decor;
+        }
+        span#score-label {            
+            color: global.$color-yellow-extra;
+        }
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+    div#speed-score-panel {
+        grid-area: 2/3/3/4;
+    }
+}
+
+@media screen and (max-width: global.$base-win-dimension) {
+    div#speed-score-panel {}
+}

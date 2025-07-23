@@ -1,0 +1,74 @@
+@use "../../styles/global.scss" as global;
+
+div#menu-panel {
+    button {
+        width: 100pt;
+        height: auto;
+        padding: 3px 10px;
+    }
+
+    #level-dialog-wraper {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        background: global.$color-white-reg;
+        box-shadow: -4px 4px 20px global.$color-dgrey-reg;
+
+        p {
+            margin: 0 auto 10px;
+            padding: 0;
+            width: fit-content;
+            color: global.$color-black-reg;
+            text-shadow: 0 0 2px global.$color-cyan-decor;
+        }
+
+        label {
+            display: block;
+            margin: 5px auto;
+            font-size: 12pt;
+            line-height: 14pt;
+
+            input {
+                display: inline-block;
+                margin: 0 10px 0 0;
+            }
+        }
+
+        div {
+            display: flex;
+            flex-direction: row;
+            gap: 5px;
+            margin: 10px auto 0;
+            width: fit-content;
+
+            button {
+                width: 50pt;
+                font-size: 10pt;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+    div#menu-panel {
+        grid-area: 2/1/4/2;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+
+    }
+}
+
+@media screen and (max-width: global.$base-win-dimension) {
+    div#menu-panel {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        width: 100%;
+    }
+}

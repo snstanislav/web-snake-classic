@@ -1,0 +1,21 @@
+@use "../../styles/global.scss" as global;
+
+div#tipps-panel {
+    border: 1px solid #000;
+    pre {
+        display: block;
+        margin: 0 auto;
+        width: fit-content;
+        font-size: 12pt;
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+    div#tipps-panel {
+        grid-area: 3/3/4/4;
+    }
+}
+
+@media screen and (max-width: global.$base-win-dimension) {
+    div#tipps-panel {}
+}

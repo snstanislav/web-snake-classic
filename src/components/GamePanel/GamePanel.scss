@@ -1,0 +1,25 @@
+@use "../../styles/global.scss" as global;
+
+div#game-panel {
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+    border: 0;
+    canvas {
+        box-sizing: border-box;
+        background: global.$color-black-reg;
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+    div#game-panel {
+        grid-area: 1/2/4/3;
+        canvas {}
+    }
+}
+
+@media screen and (max-width: global.$base-win-dimension) {
+    div#game-panel {
+        canvas {}
+    }
+}
