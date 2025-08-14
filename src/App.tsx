@@ -43,6 +43,8 @@ function AppContent() {
     if (gameContext && gameContext.movementDirection.current !== 0 && gameContext.isKeyPressAllowed.current) {
 
       const handleKeyDown = (event: KeyboardEvent) => {
+        event.preventDefault();
+        
         switch (event.key) {
           case 'ArrowUp':
           case 'w':
