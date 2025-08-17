@@ -55,10 +55,10 @@ export const GameContext = createContext<GameContextType | undefined>(undefined)
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Properties
-  const [gameAreaSize, setGameAreaSize] = useState(gamePanelDimension);
-  const [currentFieldSell, setFieldSell] = useState(fieldSell);
-  const [currentSingleSell, setSingleSell] = useState(singleSell);
-  const [currentFood, setCurrentFood] = useState(new Food(fieldSell, gameAreaSize));
+  const [gameAreaSize] = useState(gamePanelDimension);
+  const [currentFieldSell] = useState(fieldSell);
+  const [currentSingleSell] = useState(singleSell);
+  const [currentFood] = useState(new Food(fieldSell, gameAreaSize));
   const [currentSnake, setCurrentSnake] = useState(new Snake(3, 100, 200, fieldSell));
 
   const currentRecord = useRef(Number(localStorage.getItem("bestScore")));
