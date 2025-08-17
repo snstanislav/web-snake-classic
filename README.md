@@ -1,6 +1,6 @@
 # A classic Snake arcade game
 
-Eat, grow, avoid walls — and your own tail.
+Eat, grow, avoid walls and your own tail.
 
 ---
 

@@ -57,7 +57,7 @@ button:active {
 @media screen and (min-width: #{$base-win-dimension + 1}) {
     div#main-game-container {
         display: grid;
-        grid-template-columns: 1.6fr auto 2fr;
+        grid-template-columns: 1.6fr auto 2.1fr;
         grid-template-rows: 1.3fr 3fr 3fr;
         gap: 20px;
         max-width: $base-win-dimension;
