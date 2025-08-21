@@ -44,7 +44,7 @@ function AppContent() {
 
       const handleKeyDown = (event: KeyboardEvent) => {
         event.preventDefault();
-        
+
         switch (event.key) {
           case 'ArrowUp':
           case 'w':
@@ -95,7 +95,7 @@ function AppContent() {
           gameContext.drawSnake();
         } else {
           if (intervalRef.current) {
-          setRecord(Number(localStorage.getItem("bestScore")));
+            setRecord(Number(localStorage.getItem("bestScore")));
             clearInterval(intervalRef.current);
             intervalRef.current = null;
             setPauseMsg(GAME_OVER);
@@ -107,13 +107,14 @@ function AppContent() {
   }
 
   return (
-    <div id="main-game-container">
-      <MenuPanel startGameLoop={startGameLoop} pause={pause} refreshRecordPanel={setRecord} />
-      <PauseBar msg={pauseMsg} />
-      <GamePanel canvasRef={gameContext.canvasRef} gameAreaSize={gameContext.gameAreaSize} />
-      <RecordPanel currentRecord={record} />
-      <SpeedScorePanel speed={speed} score={score} />
-      <TippsPanel />
+    <div id="main-wrapper">
+      <div id="main-game-container">
+        <MenuPanel startGameLoop={startGameLoop} pause={pause} refreshRecordPanel={setRecord} />
+        <PauseBar msg={pauseMsg} />
+        <GamePanel canvasRef={gameContext.canvasRef} gameAreaSize={gameContext.gameAreaSize} />
+        <RecordPanel currentRecord={record} />
+        <SpeedScorePanel speed={speed} score={score} />
+        <TippsPanel /></div>
     </div>
   );
 }

@@ -3,7 +3,6 @@
 div#pause-bar {
     margin: 0 auto;
     padding: 10px;
-    width: 100%;
     min-height: 40pt;
     align-content: center;
     text-align: center;
@@ -12,15 +11,24 @@ div#pause-bar {
     font-weight: normal;
 }
 
-@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+@media screen and (max-width: global.$base-win-dimension) {
+    div#pause-bar {
+        width: 100%;
+        height: fit-content;
+        padding: 0;
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension + global.$dimens-coeff-middle}) {
     div#pause-bar {
         grid-area: 1/1/2/2;
+        width: 200px;
         height: 100%;
     }
 }
 
-@media screen and (max-width: global.$base-win-dimension) {
+@media screen and (min-width: #{global.$base-win-dimension * global.$dimens-coeff-large}) {
     div#pause-bar {
-        height: fit-content;
+        width: 300px;
     }
 }

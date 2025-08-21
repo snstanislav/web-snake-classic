@@ -7,7 +7,7 @@ let fieldSell: number;
 let singleSell: number;
 (() => {
   gamePanelDimension = Math.round(window.innerHeight / 100) * 100 - 100;
-  fieldSell = Math.round(gamePanelDimension / 30 / 10) * 10;
+  fieldSell = Math.round(gamePanelDimension / 1000) * 1000 / 40;
   singleSell = Math.round(fieldSell * 0.9);
 })();
 
@@ -85,7 +85,6 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   const endGame = () => {
-    debugger;
     processGameResult();
     clearMovementState();
     isKeyPressAllowed.current = false;

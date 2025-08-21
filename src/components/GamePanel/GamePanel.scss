@@ -5,21 +5,33 @@ div#game-panel {
     padding: 0 auto;
     box-sizing: border-box;
     border: 0;
+
     canvas {
         box-sizing: border-box;
         background: global.$color-black-reg;
     }
 }
 
-@media screen and (min-width: #{global.$base-win-dimension + 1}) {
+@media screen and (max-width: global.$base-win-dimension) {
     div#game-panel {
-        grid-area: 1/2/4/3;
-        canvas {}
+        canvas {
+            min-width: 300px;
+        }
     }
 }
 
-@media screen and (max-width: global.$base-win-dimension) {
+@media screen and (min-width: #{global.$base-win-dimension + global.$dimens-coeff-middle}) {
     div#game-panel {
-        canvas {}
+        grid-area: 1/2/4/3;
+    }
+}
+
+@media screen and (min-width: #{global.$base-win-dimension * global.$dimens-coeff-large}) {
+div#game-panel {
+        grid-area: 1/2/4/3;
+
+        canvas {
+            max-width: global.$base-win-dimension;
+        }
     }
 }

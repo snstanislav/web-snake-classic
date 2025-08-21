@@ -36,6 +36,7 @@ export function MenuPanel({ startGameLoop, pause, refreshRecordPanel }: { startG
     setSelectedSpeed(parseInt(e.target.value, 10));
   }
 
+  // ! check func after game over
   const clearRecord = () => {
     if (window.confirm("\n\nYou're trying to delete your current game record.\n\nAre you sure?!")) {
       localStorage.setItem("bestScore", "0");

@@ -1,4 +1,6 @@
 $base-win-dimension: 950px;
+$dimens-coeff-middle: 1;
+$dimens-coeff-large: 2.5;
 
 $color-black-reg: #000;
 $color-white-reg: #FFF;
@@ -12,6 +14,7 @@ body {
     padding: 0;
     font-family: 'Courier New', 'Verdana', 'Segoe UI', sans-serif;
     font-size: 14pt;
+
 }
 
 .widget {
@@ -46,28 +49,61 @@ button:active {
     color: $color-black-reg;
 }
 
-#main-game-container {
-    margin: 0 auto;
-    padding: 10px;
-    div {
-        box-sizing: border-box;
-    }
-}
-
-@media screen and (min-width: #{$base-win-dimension + 1}) {
-    div#main-game-container {
-        display: grid;
-        grid-template-columns: 1.6fr auto 2.1fr;
-        grid-template-rows: 1.3fr 3fr 3fr;
-        gap: 20px;
-        max-width: $base-win-dimension;
-    }
-}
-
 @media screen and (max-width: $base-win-dimension) {
-    div#main-game-container {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    #main-wrapper {
+        margin: 0 auto;
+        width: 80%;
+
+        div#main-game-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        div {
+            width: 100%;
+            text-align: center;
+            justify-content: center;
+        }
+    }
+}
+
+@media screen and (min-width: #{$base-win-dimension + $dimens-coeff-middle}) {
+    #main-wrapper {
+        margin: 0 auto;
+        padding: 10px;
+
+        div#main-game-container {
+            display: grid;
+            grid-template-columns: minmax(auto, 1.6fr) minmax(auto) minmax(auto, 2.1fr);
+            grid-template-rows: 1.3fr 3fr 3fr;
+            gap: 20px;
+            justify-content: center;
+
+            div {
+                box-sizing: border-box;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: #{$base-win-dimension * $dimens-coeff-large}) {
+    #main-wrapper {
+        margin: 0 auto;
+        padding: 10px;
+
+        div#main-game-container {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: 1.3fr 3fr 3fr;
+            gap: 20px;
+            justify-content: center;
+
+            div {
+                box-sizing: border-box;
+                text-align: center;
+                align-items: center;
+            }
+        }
     }
 }
