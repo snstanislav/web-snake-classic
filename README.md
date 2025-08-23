@@ -17,7 +17,7 @@ Eat, grow, avoid walls and your own tail.
 
 - **TypeScript**
 - **React.js 19.1.0**
-- **SASS 10.9.2**
+- **SASS**
 
 ---
 

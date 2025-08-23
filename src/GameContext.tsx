@@ -2,16 +2,26 @@ import React, { createContext, useState, useRef } from 'react';
 import { Food } from './models/food';
 import { Snake } from './models/snake';
 
-let gamePanelDimension: number;
-let fieldSell: number;
-let singleSell: number;
-(() => {
-  gamePanelDimension = Math.round(window.innerHeight / 100) * 100 - 100;
-  fieldSell = Math.round(gamePanelDimension / 1000) * 1000 / 40;
-  singleSell = Math.round(fieldSell * 0.9);
-})();
+let gamePanelDimension: number = 400;
+let fieldSell: number = 10;
+let singleSell: number = 9;
+let initSnakeLocX: number = 100;
+let initSnakeLocY: number = 100;
 
-export enum Borders { Top = 0, Bottom = gamePanelDimension, Left = 0, Right = gamePanelDimension }
+export function initDimensions() {
+  gamePanelDimension = Math.round(window.innerHeight / 100) * 100 - 100;
+  fieldSell = Math.round(gamePanelDimension / 1000) * 1000 / 40 || fieldSell;
+  singleSell = Math.round(fieldSell * 0.9) || singleSell;
+  initSnakeLocX = gamePanelDimension / 2;
+  initSnakeLocY = gamePanelDimension / 2
+}
+initDimensions();
+
+window.addEventListener("resize", () => {
+  window.location.reload();
+});
+
+export const Borders = { Top: 0, Bottom: gamePanelDimension, Left: 0, Right: gamePanelDimension }
 export enum LevelSleepIntervals { First = 400, Second = 300, Third = 200, Fourth = 150, Fifth = 100, Sixth = 50 }
 export enum Directions { None, Up, Down, Left, Right }
 export const PAUSE_MSG: string = "Press Space to pause";
@@ -55,18 +65,16 @@ export const GameContext = createContext<GameContextType | undefined>(undefined)
 
 export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Properties
-  const [gameAreaSize] = useState(gamePanelDimension);
-  const [currentFieldSell] = useState(fieldSell);
-  const [currentSingleSell] = useState(singleSell);
-  const [currentFood] = useState(new Food(fieldSell, gameAreaSize));
-  const [currentSnake, setCurrentSnake] = useState(new Snake(3, 100, 200, fieldSell));
-
+  const [gameAreaSize/*, setGameAreaSize*/] = useState(gamePanelDimension);
+  const [currentFieldSell/*, setCurrentFieldSell*/] = useState(fieldSell);
+  const [currentSingleSell/*, setCurrentSingleSell*/] = useState(singleSell);
+  const [currentFood/*, setCurrentFood*/] = useState(new Food(fieldSell, gameAreaSize));
+  const [currentSnake, setCurrentSnake] = useState(new Snake(3, initSnakeLocX, initSnakeLocY, fieldSell));
   const currentRecord = useRef(Number(localStorage.getItem("bestScore")));
   const currentSpeedLevel = useRef(LevelSleepIntervals.First);
   const currentScore = useRef(0);
   const isKeyPressAllowed = useRef(false);
   const movementDirection = useRef(Directions.None);
-
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Functions
@@ -75,7 +83,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   const initGame = (selectedSpeed: LevelSleepIntervals) => {
-    setCurrentSnake(new Snake(3, 100, 200, fieldSell));
+    setCurrentSnake(new Snake(3, initSnakeLocX, initSnakeLocY, fieldSell));
     manageNewFoodLocation();
     currentScore.current = 0;
     currentSpeedLevel.current = selectedSpeed;
@@ -93,7 +101,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const processGameResult = () => {
     let resutlMsg = "\n\nGAME OVER!\n\nScore: " + currentScore.current;
     let storedRecord = Number(localStorage.getItem("bestScore"));
-    if (!storedRecord || storedRecord < currentScore.current) {
+    if (currentScore.current > 0 && storedRecord < currentScore.current) {
       localStorage.setItem("bestScore", currentScore.current.toString());
       resutlMsg += "\n\nCongrats! You've got a new record";
     }

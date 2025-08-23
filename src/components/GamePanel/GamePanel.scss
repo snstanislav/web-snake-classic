@@ -15,7 +15,7 @@ div#game-panel {
 @media screen and (max-width: global.$base-win-dimension) {
     div#game-panel {
         canvas {
-            min-width: 300px;
+            min-width: 100px;
         }
     }
 }
@@ -31,7 +31,7 @@ div#game-panel {
         grid-area: 1/2/4/3;
 
         canvas {
-            max-width: global.$base-win-dimension;
+            max-width: global.$max-field-size;
         }
     }
 }

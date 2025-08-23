@@ -1,3 +1,4 @@
+$max-field-size: 1500px;
 $base-win-dimension: 950px;
 $dimens-coeff-middle: 1;
 $dimens-coeff-large: 2.5;
@@ -14,7 +15,6 @@ body {
     padding: 0;
     font-family: 'Courier New', 'Verdana', 'Segoe UI', sans-serif;
     font-size: 14pt;
-
 }
 
 .widget {

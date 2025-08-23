@@ -38,7 +38,6 @@ function AppContent() {
   const startGameLoop = () => {
     setSpeed(Object.values(LevelSleepIntervals).filter(value => typeof value === "number").indexOf(gameContext.currentSpeedLevel.current) + 1)
 
-    //debugger;
     setPauseMsg(PAUSE_MSG);
     if (gameContext && gameContext.movementDirection.current !== 0 && gameContext.isKeyPressAllowed.current) {
 
@@ -106,10 +105,17 @@ function AppContent() {
     }
   }
 
+  const clearGameLoop = () => {
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+    }
+  }
+
   return (
     <div id="main-wrapper">
       <div id="main-game-container">
-        <MenuPanel startGameLoop={startGameLoop} pause={pause} refreshRecordPanel={setRecord} />
+        <MenuPanel startGameLoop={startGameLoop} clearGameLoop={clearGameLoop} pause={pause} refreshRecordPanel={setRecord} />
         <PauseBar msg={pauseMsg} />
         <GamePanel canvasRef={gameContext.canvasRef} gameAreaSize={gameContext.gameAreaSize} />
         <RecordPanel currentRecord={record} />

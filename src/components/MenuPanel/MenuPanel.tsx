@@ -2,7 +2,7 @@ import React, { useContext, useState, useRef } from 'react';
 import { LevelSleepIntervals, GameContext } from '../../GameContext';
 import './MenuPanel.scss';
 
-export function MenuPanel({ startGameLoop, pause, refreshRecordPanel }: { startGameLoop: any, pause: any, refreshRecordPanel: any }) {
+export function MenuPanel({ startGameLoop, clearGameLoop, pause, refreshRecordPanel }: { startGameLoop: any, clearGameLoop: any, pause: any, refreshRecordPanel: any }) {
   const gameContext = useContext(GameContext);
 
   const [isDialogOpened, setIsDialogOpened] = useState(false);
@@ -26,6 +26,9 @@ export function MenuPanel({ startGameLoop, pause, refreshRecordPanel }: { startG
 
   const handleConfirm = () => {
     if (selectedSpeed !== null && gameContext) {
+      if (gameContext.isKeyPressAllowed.current === true) {
+        clearGameLoop();
+      }
       gameContext.initGame(selectedSpeed);
       startGameLoop();
     }
@@ -40,7 +43,7 @@ export function MenuPanel({ startGameLoop, pause, refreshRecordPanel }: { startG
   const clearRecord = () => {
     if (window.confirm("\n\nYou're trying to delete your current game record.\n\nAre you sure?!")) {
       localStorage.setItem("bestScore", "0");
-      if (gameContext && gameContext.currentRecord.current) {
+      if (gameContext && gameContext.currentRecord) {
         gameContext.currentRecord.current = 0;
         refreshRecordPanel(0);
       }

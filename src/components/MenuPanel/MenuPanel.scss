@@ -10,6 +10,7 @@ div#menu-panel {
     #level-dialog-wraper {
         display: flex;
         flex-direction: column;
+        width: fit-content;
         padding: 10px 20px;
         box-sizing: border-box;
         background: global.$color-white-reg;
