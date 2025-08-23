@@ -17,10 +17,6 @@ export function initDimensions() {
 }
 initDimensions();
 
-window.addEventListener("resize", () => {
-  window.location.reload();
-});
-
 export const Borders = { Top: 0, Bottom: gamePanelDimension, Left: 0, Right: gamePanelDimension }
 export enum LevelSleepIntervals { First = 400, Second = 300, Third = 200, Fourth = 150, Fifth = 100, Sixth = 50 }
 export enum Directions { None, Up, Down, Left, Right }
