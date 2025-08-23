@@ -1,4 +1,4 @@
-import React, { useContext, useState, useRef, useEffect } from 'react';
+import { useContext, useState, useRef } from 'react';
 import { GameProvider, GameContext, Directions, LevelSleepIntervals, CONTINUE_MSG, PAUSE_MSG, GAME_OVER } from './GameContext';
 
 import './styles/global.scss';
@@ -10,9 +10,6 @@ import { SpeedScorePanel } from './components/SpeedScorePanel/SpeedScorePanel';
 import { TippsPanel } from './components/TippsPanel/TippsPanel';
 
 export default function App() {
-
-
-
   return (
     <GameProvider>
       <AppContent />
@@ -25,17 +22,7 @@ function AppContent() {
   if (!gameContext) {
     throw new Error("Loading failed");
   }
-
-  useEffect(() => {
-    const handleResize = () => { window.location.reload(); };
-    if (gameContext.isKeyPressAllowed.current === false) {
-      window.addEventListener("resize", handleResize);
-    } 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [gameContext.isKeyPressAllowed.current]);
-
+  
   const [pauseMsg, setPauseMsg] = useState("");
   const [record, setRecord] = useState(Number(localStorage.getItem("bestScore")));
   const [speed, setSpeed] = useState(0);

@@ -1,4 +1,4 @@
-import React, { createContext, useState, useRef } from 'react';
+import React, { createContext, useState, useRef, useEffect } from 'react';
 import { Food } from './models/food';
 import { Snake } from './models/snake';
 
@@ -73,6 +73,19 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const movementDirection = useRef(Directions.None);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  const [isRefreshAllowed, setIsRefreshAllowed] = useState(isKeyPressAllowed.current);
+
+  // Refresh by resizing if game is not running
+  useEffect(() => {
+    const handleResize = () => { window.location.reload(); };
+    if (isRefreshAllowed === false) {
+      window.addEventListener("resize", handleResize);
+    }
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isRefreshAllowed]);
+
   // Functions
   const clearMovementState = () => {
     movementDirection.current = Directions.None;
@@ -84,6 +97,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     currentScore.current = 0;
     currentSpeedLevel.current = selectedSpeed;
     isKeyPressAllowed.current = true;
+    setIsRefreshAllowed(isKeyPressAllowed.current);
     // Initial movement
     movementDirection.current = Directions.Up;
   }
@@ -92,6 +106,7 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
     processGameResult();
     clearMovementState();
     isKeyPressAllowed.current = false;
+    setIsRefreshAllowed(isKeyPressAllowed.current);
   }
 
   const processGameResult = () => {
