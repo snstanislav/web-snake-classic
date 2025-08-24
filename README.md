@@ -6,18 +6,19 @@ Eat, grow, avoid walls and your own tail.
 
 ## Features
 
-- Speed levels
-- Score counter
-- Keyboard controls
-- Pixel-art style
+- Scalable playing field depending on the window size  
+- Speed levels  
+- Score counter  
+- Keyboard controls  
+- Pixel-art style  
 
 ---
 
 ## Tech Stack
 
-- **TypeScript**
-- **React.js 19.1.0**
-- **SASS**
+- **TypeScript**  
+- **React.js 19.1.0**  
+- **SASS**  
 
 ---
 

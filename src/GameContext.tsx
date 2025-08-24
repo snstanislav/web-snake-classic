@@ -103,10 +103,10 @@ export const GameProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }
 
   const endGame = () => {
-    processGameResult();
     clearMovementState();
     isKeyPressAllowed.current = false;
     setIsRefreshAllowed(isKeyPressAllowed.current);
+    processGameResult();
   }
 
   const processGameResult = () => {
