@@ -1,3 +1,12 @@
+/**
+ * Tipps panel for user's keyboard control
+ * 
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/components/TippsPanel
+ */
+
 import './TippsPanel.scss';
 
 export function TippsPanel() {

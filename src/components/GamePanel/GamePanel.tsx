@@ -1,3 +1,12 @@
+/**
+ * Main game panel
+ * 
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/components/GamePanel
+ */
+
 import React, { useEffect } from 'react';
 import './GamePanel.scss';
 

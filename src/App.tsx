@@ -1,3 +1,13 @@
+/**
+ * Main application component for the Snake game.
+ * Manages game loop, keyboard controls and provides the core UI layout
+ * 
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module App
+ */
+
 import { useContext, useState, useRef } from 'react';
 import { GameProvider, GameContext, Directions, LevelSleepIntervals, CONTINUE_MSG, PAUSE_MSG, GAME_OVER } from './GameContext';
 
@@ -9,6 +19,9 @@ import { RecordPanel } from './components/RecordPanel/RecordPanel';
 import { SpeedScorePanel } from './components/SpeedScorePanel/SpeedScorePanel';
 import { TippsPanel } from './components/TippsPanel/TippsPanel';
 
+/**
+ * Root component that wraps the application with GameProvider context
+ */
 export default function App() {
   return (
     <GameProvider>
@@ -17,6 +30,14 @@ export default function App() {
   );
 }
 
+/**
+ * Main game component containing core game logic and UI layout
+ * Handles:
+ * - Keyboard input for movement and pause
+ * - Game loop timing and updates
+ * - Score and speed tracking
+ * - UI state management
+ */
 function AppContent() {
   const gameContext = useContext(GameContext);
   if (!gameContext) {
@@ -30,11 +51,18 @@ function AppContent() {
   let movingFunc = gameContext.moveUp;
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  /**
+   * Pauses the game and updates UI message
+   */
   function pause() {
     setPauseMsg(CONTINUE_MSG);
     gameContext?.clearMovementState();
   }
 
+  /**
+   * Initializes and starts the main game loop
+   * Sets up keyboard listeners and interval-based updates
+   */
   const startGameLoop = () => {
     setSpeed(Object.values(LevelSleepIntervals).filter(value => typeof value === "number").indexOf(gameContext.currentSpeedLevel.current) + 1)
 
@@ -105,6 +133,9 @@ function AppContent() {
     }
   }
 
+  /**
+   * Cleans up game loop interval if running
+   */
   const clearGameLoop = () => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);

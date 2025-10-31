@@ -1,3 +1,14 @@
+/**
+ * Represents the basic entity of the game. 
+ * Describes simple 2D-point with x and y coordinates.
+ * 
+ * @class LocationPoint
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/models/location-point
+ */
+
 export class LocationPoint {
     private _x: number;
     private _y: number;

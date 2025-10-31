@@ -1,3 +1,12 @@
+/**
+ * Menu panel
+ * 
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/components/MenuPanel
+ */
+
 import React, { useContext, useState, useRef } from 'react';
 import { LevelSleepIntervals, GameContext } from '../../GameContext';
 import './MenuPanel.scss';

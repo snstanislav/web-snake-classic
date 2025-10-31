@@ -1,3 +1,14 @@
+/**
+ * Represents a food object in the game. 
+ * Contains property of its own location, generates randomly new coordinates of the food.
+ * 
+ * @class Food
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/models/food
+ */
+
 import { LocationPoint } from './location-point';
 
 export class Food {

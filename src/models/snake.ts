@@ -1,3 +1,15 @@
+/**
+ * Represents the most functional logic entity in the game. 
+ * It contains the collection, each element of which represents a segment of the snake.
+ * Contains methods for performing every discrete action and checking in a snake's lifecircle. 
+ * 
+ * @class Snake
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/models/snake
+ */
+
 import { LocationPoint } from './location-point';
 
 export class Snake {

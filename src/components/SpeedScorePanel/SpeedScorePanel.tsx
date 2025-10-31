@@ -1,3 +1,12 @@
+/**
+ * Current speed score panel
+ * 
+ * @author Stanislav Snisar
+ * @version 1.0.0
+ * @created 07.2024
+ * @module src/components/SpeedScorePanel
+ */
+
 import './SpeedScorePanel.scss';
 
 export function SpeedScorePanel({ speed, score }: { speed: number, score: number }) {
