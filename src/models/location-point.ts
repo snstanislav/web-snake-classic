@@ -6,7 +6,7 @@
  * @author Stanislav Snisar
  * @version 1.0.0
  * @created 07.2024
- * @module src/models/location-point
+ * @module models/location-point
  */
 
 export class LocationPoint {

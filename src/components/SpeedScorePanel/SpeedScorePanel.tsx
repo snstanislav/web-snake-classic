@@ -4,7 +4,7 @@
  * @author Stanislav Snisar
  * @version 1.0.0
  * @created 07.2024
- * @module src/components/SpeedScorePanel
+ * @module components/SpeedScorePanel
  */
 
 import './SpeedScorePanel.scss';

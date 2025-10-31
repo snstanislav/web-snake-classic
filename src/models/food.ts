@@ -6,7 +6,7 @@
  * @author Stanislav Snisar
  * @version 1.0.0
  * @created 07.2024
- * @module src/models/food
+ * @module models/food
  */
 
 import { LocationPoint } from './location-point';

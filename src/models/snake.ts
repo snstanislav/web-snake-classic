@@ -7,7 +7,7 @@
  * @author Stanislav Snisar
  * @version 1.0.0
  * @created 07.2024
- * @module src/models/snake
+ * @module models/snake
  */
 
 import { LocationPoint } from './location-point';
