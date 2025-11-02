@@ -1,7 +1,7 @@
 # Web Snake Classic 
 Eat, grow, avoid walls and your own tail — a classic Snake arcade game. 
 
-[Live Demo](https://snstanislav.github.io/ordinary-web-calculator/) 
+[Live Demo](https://snstanislav.github.io/web-snake-classic/) 
 
 ## Features
 - Scalable playing field based on window size
